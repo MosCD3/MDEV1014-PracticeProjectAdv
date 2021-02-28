@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MDEV1014PracticeProject.Views.FlyoutMenuPage"
+             xmlns:models="clr-namespace:MDEV1014PracticeProject.Models"
+             xmlns:views="clr-namespace:MDEV1014PracticeProject.Views"
+             Padding="0,40,0,0"
+             Title="☰">
+    <StackLayout>
+        <ListView x:Name="listView" x:FieldModifier="public">
+            <ListView.ItemsSource>
+                <x:Array Type="{x:Type models:MenuListItem}">
+                    <models:MenuListItem Title="Home" IconSource="home.png" TargetType="{x:Type views:InternalHomePage}" />
+                    <models:MenuListItem Title="Contacts" IconSource="contacts.png" TargetType="{x:Type views:ContactsPage}" />
+                    <models:MenuListItem Title="Faculty" IconSource="contacts.png" TargetType="{x:Type views:FacultyPage}" />
+
+                </x:Array>
+            </ListView.ItemsSource>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid Padding="5,10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="30"/>
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Image Source="{Binding IconSource}" />
+                            <Label Grid.Column="1" Text="{Binding Title}" />
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+</ContentPage>
