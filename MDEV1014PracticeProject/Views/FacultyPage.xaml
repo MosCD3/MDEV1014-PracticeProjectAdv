@@ -4,9 +4,57 @@
              x:Class="MDEV1014PracticeProject.Views.FacultyPage"
              Title="{Binding PageTitle}" >
     <ContentPage.Content>
-        <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
-            <Button Text="Change Title" Command="{Binding ChangeTitleCommand}"/>
-        </StackLayout>
+        <CollectionView
+            x:Name="collectionList"
+            ItemsSource="{Binding ItemsList}"
+            SelectionMode="Single"
+            FlowDirection="LeftToRight"
+            SelectionChanged="collectionList_SelectionChanged" >
+
+          <CollectionView.ItemsLayout>
+              <!--<GridItemsLayout
+                  Orientation="Horizontal"
+                  Span="1"
+                  HorizontalItemSpacing="5"
+                  VerticalItemSpacing="5"/>-->
+                <LinearItemsLayout Orientation="Vertical" ItemSpacing="10"/>
+          </CollectionView.ItemsLayout>
+
+
+         <CollectionView.ItemTemplate>
+            <DataTemplate >
+                <Frame  BorderColor="LightGray" CornerRadius="3" HasShadow="False">
+                    <Grid Padding="10">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <Image Grid.RowSpan="2"
+                           Source="{Binding AvatarUrl}"
+                           Aspect="AspectFit"
+                           HeightRequest="60"
+                           WidthRequest="60" />
+                    <Label Grid.Column="1"
+                           Text="{Binding Name}"
+                           FontAttributes="Bold" />
+                    <Label Grid.Row="1"
+                           Grid.Column="1"
+                           Text="{Binding Email}"
+                           FontAttributes="Italic"
+                           VerticalOptions="End" />
+                </Grid>
+                </Frame>
+            
+        </DataTemplate>
+    </CollectionView.ItemTemplate>
+
+        </CollectionView>
+
+
         <!--<CollectionView
             x:Name="collectionList"
             ItemsSource="{Binding ItemsList}"
