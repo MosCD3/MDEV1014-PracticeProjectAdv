@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
+using Xamarin.Forms;
 
 namespace MDEV1014PracticeProject.ViewModels
 {
@@ -10,6 +11,8 @@ namespace MDEV1014PracticeProject.ViewModels
     {
 
         bool isBusy = false;
+        protected App MyApp = Application.Current as App;
+
         public bool IsBusy
         {
             get { return isBusy; }
@@ -47,6 +50,11 @@ namespace MDEV1014PracticeProject.ViewModels
             changed.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
         #endregion
+
+
+        protected Task DisplayAlert(string message, string title = "Attention!", string btnTitle = "Ok") {
+            return MyApp.MainPage.DisplayAlert(title, message, btnTitle);
+        }
     }
 
 }

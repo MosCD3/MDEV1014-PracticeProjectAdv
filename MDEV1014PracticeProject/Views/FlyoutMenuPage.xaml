@@ -13,6 +13,7 @@
                     <models:MenuListItem Title="Home" IconSource="home.png" TargetType="{x:Type views:InternalHomePage}" />
                     <models:MenuListItem Title="Contacts" IconSource="contacts.png" TargetType="{x:Type views:ContactsPage}" />
                     <models:MenuListItem Title="Faculty" IconSource="contacts.png" TargetType="{x:Type views:FacultyPage}" />
+                    <models:MenuListItem Title="Settings" IconSource="contacts.png" TargetType="{x:Type views:SettingsPage}" />
 
                 </x:Array>
             </ListView.ItemsSource>
