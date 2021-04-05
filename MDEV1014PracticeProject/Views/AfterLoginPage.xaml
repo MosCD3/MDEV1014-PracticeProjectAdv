@@ -3,7 +3,8 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:views="clr-namespace:MDEV1014PracticeProject.Views;assembly=MDEV1014PracticeProject"
-    x:Class="MDEV1014PracticeProject.Views.AfterLoginPage">
+    x:Class="MDEV1014PracticeProject.Views.AfterLoginPage"
+    BackgroundColor="{StaticResource PageBackgroundColor}">
 
     <FlyoutPage.Flyout>
         <views:FlyoutMenuPage x:Name="flyoutPage" />

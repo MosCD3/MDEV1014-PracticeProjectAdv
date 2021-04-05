@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MDEV1014PracticeProject.Views.FacultyPage"
+             BackgroundColor="{StaticResource PageBackgroundColor}"
              Title="{Binding PageTitle}" >
     <ContentPage.Content>
         <CollectionView

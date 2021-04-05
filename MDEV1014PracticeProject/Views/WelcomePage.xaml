@@ -2,7 +2,8 @@
 <ContentPage
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    x:Class="MDEV1014PracticeProject.Views.WelcomePage">
+    x:Class="MDEV1014PracticeProject.Views.WelcomePage"
+    BackgroundColor="{StaticResource PageBackgroundColor}">
     <ContentPage.Content>
         <Grid>
             <Grid.RowDefinitions>
@@ -10,12 +11,22 @@
                 <RowDefinition Height="0.5*"/>
             </Grid.RowDefinitions>
             <StackLayout Grid.Row="0" VerticalOptions="Center">
-                <Label Text="Welcome To MDEV1014 Project"  HorizontalOptions="Center"/>
+                <Label
+                    Text="Welcome To MDEV1014"
+                    HorizontalOptions="Center"
+                    Style="{StaticResource LabelTitleStyle}"/>
+                <Image
+                    Margin="0,30,0,0"
+                    WidthRequest="100"
+                    HeightRequest="100"
+                    Source="customer.png"/>
             </StackLayout>
 
-            <StackLayout Grid.Row="1" BackgroundColor="Brown" VerticalOptions="Center">
-                <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
-                    <Button Text="Login" TextColor="White" Command="{Binding LoginCommand}"/>
+            <StackLayout Grid.Row="1"  VerticalOptions="Center">
+                <StackLayout VerticalOptions="Center">
+                    <Button
+                        Text="Login"
+                        Command="{Binding LoginCommand}"/>
                 </StackLayout>
             </StackLayout>
         </Grid>

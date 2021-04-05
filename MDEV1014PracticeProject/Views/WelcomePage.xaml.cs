@@ -11,6 +11,10 @@ namespace MDEV1014PracticeProject.Views
         {
             BindingContext = new WelcomePageVM();
             InitializeComponent();
+
+            //Xaml
+            //NavigationPage.HasNavigationBar = "false"
+            NavigationPage.SetHasNavigationBar(this, false);
         }
     }
 }

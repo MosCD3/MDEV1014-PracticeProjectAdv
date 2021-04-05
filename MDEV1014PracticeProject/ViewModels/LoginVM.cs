@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using Flurl.Http;
 using MDEV1014PracticeProject.Models;
+using MDEV1014PracticeProject.Services.Auth;
 using Newtonsoft.Json;
 using Xamarin.Forms;
 
@@ -44,32 +45,15 @@ namespace MDEV1014PracticeProject.ViewModels
                 return;
             }
 
-            var sentObj = new ServerAuth
-            {
-                Email = Username,
-                Password = Password,
-                Action = "SignIn"
-            };
+            
 
             Debug.WriteLine("Auth process started ..");
 
             try
             {
-                var url = "http://www.moscd.com/service/mdev.php";
-                string res = await url
-                .WithTimeout(20)
-                .PostJsonAsync(sentObj)
-                .ReceiveString();
+                var service = Adapter.Shared.authService;
+                var resultObject = await service.SignInAsync(Username, Password);
 
-
-                Debug.WriteLine($"Response from server:{res}");
-
-                var resultObject = JsonConvert.DeserializeObject<GenericServiceResponse>(res);
-
-                Debug.WriteLine($"Is there error:{resultObject.error}");
-                Debug.WriteLine($"Is there message:{resultObject.message}");
-
-                
                 if (resultObject != null)
                 {
                     //Error true
@@ -90,7 +74,8 @@ namespace MDEV1014PracticeProject.ViewModels
                     }
 
                     //No Error
-                    else {
+                    else
+                    {
                         if (resultObject.token != null)
                         {
                             await DisplayAlert("Success login");
@@ -100,14 +85,16 @@ namespace MDEV1014PracticeProject.ViewModels
                             await MyApp.SavePropertyAsync("token", resultObject.token);
                             MyApp.SignIn();
                         }
-                        else {
+                        else
+                        {
                             await DisplayAlert("Token not found!", "Error!");
                         }
                     }
                 }
                 else {
-
+                    await DisplayAlert("Unknown Error");
                 }
+
 
 
             }
