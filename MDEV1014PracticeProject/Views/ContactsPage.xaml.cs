@@ -32,7 +32,7 @@ namespace MDEV1014PracticeProject.Views
 
             if (userObject != null) {
 
-                string current = userObject.Name;
+                string current = userObject.name;
 
                 Debug.WriteLine($"current selected item:{current}");
 

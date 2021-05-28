@@ -41,8 +41,8 @@ namespace MDEV1014PracticeProject.ViewModels
         public ContactsPageVM()
         {
             ItemsList = new ObservableCollection<User>();
-            ItemsList.Add(new User { Name = "Mostafa", Email = "mostafa.gamal@georgiancollege.ca", ImageUrl = "icon-thumb1.png" });
-            ItemsList.Add(new User { Name = "Rob", Email = "rob@georgiancollege.ca", ImageUrl = "customer.png" });
+            ItemsList.Add(new User { name = "Mostafa", email = "mostafa.gamal@georgiancollege.ca", image_url = "icon-thumb1.png" });
+            ItemsList.Add(new User { name = "Rob", email = "rob@georgiancollege.ca", image_url = "customer.png" });
         }
 
 

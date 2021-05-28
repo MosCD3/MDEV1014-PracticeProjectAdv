@@ -27,16 +27,16 @@
                             <ColumnDefinition Width="Auto" />
                         </Grid.ColumnDefinitions>
                         <Image Grid.RowSpan="2"
-                               Source="{Binding ImageUrl}"
+                               Source="{Binding image_url}"
                                Aspect="AspectFill"
                                HeightRequest="60"
                                WidthRequest="60" />
                         <Label Grid.Column="1"
-                               Text="{Binding Name}"
+                               Text="{Binding name}"
                                FontAttributes="Bold" />
                         <Label Grid.Row="1"
                                Grid.Column="1"
-                               Text="{Binding Email}"
+                               Text="{Binding email}"
                                FontAttributes="Italic"
                                VerticalOptions="End" />
                     </Grid>

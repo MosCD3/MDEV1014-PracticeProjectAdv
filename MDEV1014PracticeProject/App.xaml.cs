@@ -3,6 +3,7 @@ using System.Diagnostics;
 using System.Threading.Tasks;
 using Flurl;
 using Flurl.Http;
+using MDEV1014PracticeProject.Models;
 using MDEV1014PracticeProject.Views;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -17,7 +18,7 @@ namespace MDEV1014PracticeProject
     public partial class App : Application
     {
         
-
+        public User ActiveUser { get; set; }
         public App()
         {
             InitializeComponent();
@@ -54,13 +55,15 @@ namespace MDEV1014PracticeProject
         }
 
 
-        public void SignIn() {
+        public void SignIn(User user) {
+            ActiveUser = user;
             NavigateMain(MainNavOption.AfterLoginPage);
         }
 
         public async Task SignOutAsync() {
             Properties.Remove(KEYS.KEY_USERNAME);
             Properties.Remove(KEYS.KEY_USERTOKEN);
+            ActiveUser = null;
             await SavePropertiesAsync();
             NavigateMain(MainNavOption.WelcomePage);
         }

@@ -3,8 +3,14 @@ namespace MDEV1014PracticeProject.Models
 {
     public class User
     {
-        public string Name { get; set; }
-        public string Email { get; set; }
-        public string ImageUrl { get; set; }
+        public string id { get; set; }
+        public string name { get; set; }
+        public string first_name { get; set; }
+        public string last_name { get; set; }
+        public string password { get; set; }
+        public string email { get; set; }
+        public string image_url { get; set; }
+        public string type { get; set; }
+        public int age { get; set; }
     }
 }

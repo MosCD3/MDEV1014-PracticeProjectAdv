@@ -14,8 +14,8 @@ namespace MDEV1014PracticeProject.ViewModels
         public ContactDetailsPageVM(User user)
         {
             userModel = user;
-            cName = userModel.Name;
-            cEmail = userModel.Email;
+            cName = userModel.name;
+            cEmail = userModel.email;
             cCollege = "Georgian College";
 
         }

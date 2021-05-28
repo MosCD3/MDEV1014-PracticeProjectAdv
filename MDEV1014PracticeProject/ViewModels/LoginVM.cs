@@ -33,9 +33,10 @@ namespace MDEV1014PracticeProject.ViewModels
 
         public LoginVM()
         {
-            Title = "Login Page";
+            
         }
 
+       
 
         private async Task LoginTapped() {
 
@@ -76,14 +77,15 @@ namespace MDEV1014PracticeProject.ViewModels
                     //No Error
                     else
                     {
-                        if (resultObject.token != null)
+                        if (resultObject.token != null && resultObject.user != null)
                         {
+                            Debug.WriteLine("I got user");
                             await DisplayAlert("Success login");
                             //TODO: save token in app properties
                             await MyApp.SavePropertyAsync(KEYS.KEY_USERNAME, Username);
                             await MyApp.SavePropertyAsync(KEYS.KEY_USERTOKEN, Password);
                             await MyApp.SavePropertyAsync("token", resultObject.token);
-                            MyApp.SignIn();
+                            MyApp.SignIn(resultObject.user);
                         }
                         else
                         {

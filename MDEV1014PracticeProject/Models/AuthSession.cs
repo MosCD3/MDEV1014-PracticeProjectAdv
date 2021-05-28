@@ -6,5 +6,6 @@ namespace MDEV1014PracticeProject.Models
         public bool error { get; set; }
         public string message { get; set; }
         public string token { get; set; }
+        public User user { get; set; }
     }
 }

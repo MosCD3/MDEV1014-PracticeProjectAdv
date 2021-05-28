@@ -29,7 +29,7 @@ namespace MDEV1014PracticeProject.Views
 
                 Debug.WriteLine($"current selected faculty:{current}");
 
-                var newPage = new ContactDetailsPage(new User { Name = current });
+                var newPage = new ContactDetailsPage(new User { name = current });
                 //var newPage = new ContactDetailsPage(user: userObject);
                 Navigation.PushAsync(newPage);
 
