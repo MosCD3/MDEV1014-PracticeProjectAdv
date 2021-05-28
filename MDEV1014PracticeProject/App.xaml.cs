@@ -19,6 +19,11 @@ namespace MDEV1014PracticeProject
     {
         
         public User ActiveUser { get; set; }
+
+        static App() {
+            BuildDependencies();
+        }
+
         public App()
         {
             InitializeComponent();
@@ -35,6 +40,11 @@ namespace MDEV1014PracticeProject
 
         protected override void OnResume()
         {
+        }
+
+        public static void BuildDependencies()
+        {
+            Locator.Instance.Build();
         }
 
 

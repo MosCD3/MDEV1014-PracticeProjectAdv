@@ -19,7 +19,14 @@ namespace MDEV1014PracticeProject.Services.Auth
                 return new AuthSession
                 {
                     error = false,
-                    token = Settings.mockToken
+                    token = Settings.mockToken,
+                    user = new User {
+                        first_name = "Fake_John",
+                        last_name = "Doe",
+                        age = 43,
+                        email = username,
+                        password = password
+                    }
                 };
 
             } else {

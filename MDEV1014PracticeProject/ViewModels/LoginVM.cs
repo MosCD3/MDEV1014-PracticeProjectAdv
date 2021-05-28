@@ -31,13 +31,15 @@ namespace MDEV1014PracticeProject.ViewModels
             LoginTapped();
         });
 
-        public LoginVM()
+        private IAuthService authService;
+
+        public LoginVM(IAuthService auth)
         {
-            
+            authService = auth;
         }
 
-       
 
+       
         private async Task LoginTapped() {
 
 
@@ -52,8 +54,8 @@ namespace MDEV1014PracticeProject.ViewModels
 
             try
             {
-                var service = Adapter.Shared.authService;
-                var resultObject = await service.SignInAsync(Username, Password);
+                
+                var resultObject = await authService.SignInAsync(Username, Password);
 
                 if (resultObject != null)
                 {

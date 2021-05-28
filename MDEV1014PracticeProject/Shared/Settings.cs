@@ -10,12 +10,16 @@ namespace MDEV1014PracticeProject
     {
 
 
-        public static string mockUserPassword = "moscd3@gmail.com";
-        public static string mockUsername = "123456";
+        public static string mockUserPassword = "123456";
+        public static string mockUsername = "moscd3@gmail.com";
         public static string mockToken = "sdjflaksdjf;asldfasdfasdfasd";
 
         //Auth used
+#if DEBUG
+        public AuthType authType = AuthType.Mock;
+#else
         public AuthType authType = AuthType.Aws;
+#endif
 
         //API
         public string API_Test = "https://api.github.com/users/petrgazarov";
