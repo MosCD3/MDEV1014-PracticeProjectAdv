@@ -26,5 +26,6 @@
     <Folder Include="Shared\" />
     <Folder Include="Services\" />
     <Folder Include="Services\Auth\" />
+    <Folder Include="Services\Navigation\" />
   </ItemGroup>
 </Project>

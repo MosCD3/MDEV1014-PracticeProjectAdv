@@ -51,6 +51,9 @@ namespace MDEV1014PracticeProject.ViewModels
         }
         #endregion
 
+        //Initialize any loading operation
+        public virtual Task InitializeAsync(object navigationData) => Task.FromResult(false);
+
 
         protected Task DisplayAlert(string message, string title = "Attention!", string btnTitle = "Ok") {
             return MyApp.MainPage.DisplayAlert(title, message, btnTitle);

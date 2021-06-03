@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Flurl;
 using Flurl.Http;
 using MDEV1014PracticeProject.Models;
+using MDEV1014PracticeProject.Services.Auth;
 using MDEV1014PracticeProject.Views;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -18,7 +19,6 @@ namespace MDEV1014PracticeProject
     public partial class App : Application
     {
         
-        public User ActiveUser { get; set; }
 
         static App() {
             BuildDependencies();
@@ -50,11 +50,20 @@ namespace MDEV1014PracticeProject
 
         private void CheckLogin() {
 
-            var savedUsername = GetProperty(KEYS.KEY_USERNAME);
-            var savedUserToken = GetProperty(KEYS.KEY_USERTOKEN);
-            if (savedUsername != null && savedUserToken != null)
+            var auth = Locator.Instance.Resolve<IAuthService>();
+
+            var savedUsername = GetProperty(KEYS.KEY_USERNAME) as string;
+            var savedUserPassword = GetProperty(KEYS.KEY_USERPASS) as string;
+            var savedUserToken = GetProperty(KEYS.KEY_USERPASS) as string;
+
+            if (savedUsername != null && savedUserToken != null && savedUserPassword != null)
             {
                 Debug.WriteLine($"A logged in user found:{savedUsername}  with token:{savedUserToken}");
+                auth.SetActiveUser(new User {
+                    email = savedUsername,
+                    password = savedUserPassword,
+                    token = savedUserToken
+                });
                 NavigateMain(MainNavOption.AfterLoginPage);
             }
             else {
@@ -66,14 +75,12 @@ namespace MDEV1014PracticeProject
 
 
         public void SignIn(User user) {
-            ActiveUser = user;
             NavigateMain(MainNavOption.AfterLoginPage);
         }
 
         public async Task SignOutAsync() {
             Properties.Remove(KEYS.KEY_USERNAME);
-            Properties.Remove(KEYS.KEY_USERTOKEN);
-            ActiveUser = null;
+            Properties.Remove(KEYS.KEY_USERPASS);
             await SavePropertiesAsync();
             NavigateMain(MainNavOption.WelcomePage);
         }

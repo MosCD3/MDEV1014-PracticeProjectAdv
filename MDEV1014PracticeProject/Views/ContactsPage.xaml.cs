@@ -23,28 +23,28 @@ namespace MDEV1014PracticeProject.Views
             Debug.WriteLine("Am Contacts appearing");
         }
 
-        void OnCollectionViewSelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
+        //void OnCollectionViewSelectionChanged(object sender, SelectionChangedEventArgs e)
+        //{
 
-            if (collectionList.SelectedItem == null) return;
+        //    if (collectionList.SelectedItem == null) return;
 
-            var userObject = (e.CurrentSelection.FirstOrDefault() as User);
+        //    var userObject = (e.CurrentSelection.FirstOrDefault() as User);
 
-            if (userObject != null) {
+        //    if (userObject != null) {
 
-                string current = userObject.name;
+        //        string current = userObject.name;
 
-                Debug.WriteLine($"current selected item:{current}");
+        //        Debug.WriteLine($"current selected item:{current}");
 
-                var newPage = new ContactDetailsPage(user: userObject);
-                Navigation.PushAsync(newPage);
+        //        var newPage = new ContactDetailsPage(user: userObject);
+        //        Navigation.PushAsync(newPage);
 
-            }
+        //    }
 
            
 
-            collectionList.SelectedItem = null;
-        }
+        //    collectionList.SelectedItem = null;
+        //}
 
     }
 }

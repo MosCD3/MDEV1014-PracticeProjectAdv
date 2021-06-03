@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using MDEV1014PracticeProject.Models;
+using MDEV1014PracticeProject.Services.Navigation;
 using Xamarin.Forms;
 
 namespace MDEV1014PracticeProject.ViewModels
@@ -26,6 +27,22 @@ namespace MDEV1014PracticeProject.ViewModels
             set { SetProperty(ref _itemslist, value); }
         }
 
+        public Faculty _SelectedItem;
+        public Faculty SelectedItem
+        {
+            get { return _SelectedItem; }
+            set
+            {
+                SetProperty(ref _SelectedItem, value);
+                if (value != null)
+                {
+                    PlaylistItemSelected(SelectedItem);
+                    SelectedItem = null;
+                }
+
+            }
+        }
+
         public ICommand ChangeTitleCommand { get; set; }
 
         public FacultyPageVM()
@@ -35,33 +52,58 @@ namespace MDEV1014PracticeProject.ViewModels
             {
                 PageTitle = "Menu Items";
             });
-
-            LoadFacultyAsync();
-
-        }
-
-        void ChangeTitleAction() {
         }
 
         void  LoadFacultyAsync() {
             //3 sec feh API
             //Load faculty information from API
             var itemsResult = new ObservableCollection<Faculty>();
-            itemsResult.Add(new Faculty { Name = "Moos", Department = "IT", Email = "moos@college.ca" , AvatarUrl = "customer.png" });
-            itemsResult.Add(new Faculty { Name = "Jessics", Department = "IT", Email = "jess@college.ca", AvatarUrl = "customer.png" });
-            itemsResult.Add(new Faculty { Name = "Rob", Department = "IT", Email = "rob@college.ca", AvatarUrl = "customer.png" });
-            itemsResult.Add(new Faculty { Name = "Mark", Department = "IT", Email = "rob@college.ca", AvatarUrl = "customer.png" });
-            itemsResult.Add(new Faculty { Name = "David", Department = "IT", Email = "rob@college.ca", AvatarUrl = "customer.png" });
-            itemsResult.Add(new Faculty { Name = "Rob", Department = "IT", Email = "rob@college.ca", AvatarUrl = "customer.png" });
-            itemsResult.Add(new Faculty { Name = "Rob", Department = "IT", Email = "rob@college.ca", AvatarUrl = "customer.png" });
-            itemsResult.Add(new Faculty { Name = "Anyname", Department = "IT", Email = "rob@college.ca", AvatarUrl = "customer.png" });
-            itemsResult.Add(new Faculty { Name = "Rob", Department = "IT", Email = "rob@college.ca", AvatarUrl = "customer.png" });
-            itemsResult.Add(new Faculty { Name = "Rob", Department = "IT", Email = "rob@college.ca", AvatarUrl = "customer.png" });
-            itemsResult.Add(new Faculty { Name = "Rob", Department = "IT", Email = "rob@college.ca", AvatarUrl = "customer.png" });
+            itemsResult.Add(new Faculty { name = "Moos", Department = "IT", email = "moos@college.ca" , image_url = "customer.png" });
+            itemsResult.Add(new Faculty { name = "Jessics", Department = "IT", email = "jess@college.ca", image_url = "customer.png" });
+            itemsResult.Add(new Faculty { name = "Rob", Department = "IT", email = "rob@college.ca", image_url = "customer.png" });
+            itemsResult.Add(new Faculty { name = "Mark", Department = "IT", email = "rob@college.ca", image_url = "customer.png" });
+            itemsResult.Add(new Faculty { name = "David", Department = "IT", email = "rob@college.ca", image_url = "customer.png" });
+            itemsResult.Add(new Faculty { name = "Rob", Department = "IT", email = "rob@college.ca", image_url = "customer.png" });
+            itemsResult.Add(new Faculty { name = "Rob", Department = "IT", email = "rob@college.ca", image_url = "customer.png" });
+            itemsResult.Add(new Faculty { name = "Anyname", Department = "IT", email = "rob@college.ca", image_url = "customer.png" });
+            itemsResult.Add(new Faculty { name = "Rob", Department = "IT", email = "rob@college.ca", image_url = "customer.png" });
+            itemsResult.Add(new Faculty { name = "Rob", Department = "IT", email = "rob@college.ca", image_url = "customer.png" });
+            itemsResult.Add(new Faculty { name = "Rob", Department = "IT", email = "rob@college.ca", image_url = "customer.png" });
             //loading from server too 3 sec
             Task.Delay(3000);
             ItemsList = itemsResult;
 
+        }
+
+
+        private async Task PlaylistItemSelected(Faculty item)
+        {
+            if (item == null)
+            {
+                Debug.WriteLine("Error user casting null");
+                return;
+            }
+
+            var navService = Locator.Instance.Resolve<INavigationService>();
+            navService.NavigateToAsync<ContactDetailsPageVM>(item);
+
+            //Debug.WriteLine($"Please edit CPE:{cpe.name}");
+
+            //var navigationParameter = new Dictionary<string, object>
+            //    {
+            //        { "location", cpe },
+            //        { "handler", SuccessHandler }
+            //    };
+
+            //await NavigationService.NavigateToAsync<CpeAddEditVM>(navigationParameter);
+
+        }
+
+        public override Task InitializeAsync(object navigationData)
+        {
+
+            LoadFacultyAsync();
+            return base.InitializeAsync(navigationData);
         }
     }
 }

@@ -16,7 +16,7 @@ namespace MDEV1014PracticeProject
 
         //Auth used
 #if DEBUG
-        public AuthType authType = AuthType.Mock;
+        public AuthType authType = AuthType.Aws;
 #else
         public AuthType authType = AuthType.Aws;
 #endif

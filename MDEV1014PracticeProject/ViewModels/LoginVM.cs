@@ -85,8 +85,9 @@ namespace MDEV1014PracticeProject.ViewModels
                             await DisplayAlert("Success login");
                             //TODO: save token in app properties
                             await MyApp.SavePropertyAsync(KEYS.KEY_USERNAME, Username);
-                            await MyApp.SavePropertyAsync(KEYS.KEY_USERTOKEN, Password);
-                            await MyApp.SavePropertyAsync("token", resultObject.token);
+                            await MyApp.SavePropertyAsync(KEYS.KEY_USERPASS, Password);
+                            await MyApp.SavePropertyAsync(KEYS.KEY_USERTOKEN, resultObject.token);
+                            authService.SetActiveUser(resultObject.user);
                             MyApp.SignIn(resultObject.user);
                         }
                         else

@@ -12,33 +12,36 @@ namespace MDEV1014PracticeProject.Views
     {
         public FacultyPage()
         {
-            BindingContext = new FacultyPageVM();
+            var vm = new FacultyPageVM();
+            BindingContext = vm;
+            vm.InitializeAsync(null);
+            
             InitializeComponent();
         }
 
-        void collectionList_SelectionChanged(System.Object sender, Xamarin.Forms.SelectionChangedEventArgs e)
-        {
-            if (collectionList.SelectedItem == null) return;
+        //void collectionList_SelectionChanged(System.Object sender, Xamarin.Forms.SelectionChangedEventArgs e)
+        //{
+        //    if (collectionList.SelectedItem == null) return;
 
-            var userObject = (e.CurrentSelection.FirstOrDefault() as Faculty);
+        //    var userObject = (e.CurrentSelection.FirstOrDefault() as Faculty);
 
-            if (userObject != null)
-            {
+        //    if (userObject != null)
+        //    {
 
-                string current = userObject.Name;
+        //        string current = userObject.Name;
 
-                Debug.WriteLine($"current selected faculty:{current}");
+        //        Debug.WriteLine($"current selected faculty:{current}");
 
-                var newPage = new ContactDetailsPage(new User { name = current });
-                //var newPage = new ContactDetailsPage(user: userObject);
-                Navigation.PushAsync(newPage);
+        //        var newPage = new ContactDetailsPage(new User { name = current });
+        //        //var newPage = new ContactDetailsPage(user: userObject);
+        //        Navigation.PushAsync(newPage);
 
-            }
+        //    }
 
 
 
-            collectionList.SelectedItem = null;
-        }
+        //    collectionList.SelectedItem = null;
+        //}
 
         void Button_Clicked(System.Object sender, System.EventArgs e)
         {

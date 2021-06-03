@@ -9,6 +9,10 @@ namespace MDEV1014PracticeProject.Services.Auth
 {
     public class AuthService : IAuthService
     {
+        private User _activeUser;
+        public User activeUser { get => _activeUser; set => _activeUser = value; }
+
+
         public AuthService()
         {
         }
@@ -42,6 +46,22 @@ namespace MDEV1014PracticeProject.Services.Auth
 
 
            
+        }
+
+
+        public void SetActiveUser(User user)
+        {
+            if (user == null)
+            {
+                return;
+            }
+            activeUser = user;
+        }
+
+        public bool Signout()
+        {
+            activeUser = null;
+            return true;
         }
     }
 }

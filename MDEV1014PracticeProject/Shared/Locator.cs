@@ -2,6 +2,8 @@
 using System.Diagnostics;
 using Autofac;
 using MDEV1014PracticeProject.Services.Auth;
+using MDEV1014PracticeProject.Services.Navigation;
+using MDEV1014PracticeProject.ViewModels;
 
 namespace MDEV1014PracticeProject
 {
@@ -21,19 +23,22 @@ namespace MDEV1014PracticeProject
             switch (Settings.Shared.authType)
             {
                 case AuthType.ServerBased:
-                    containerBuilder.RegisterType<AuthService>().As<IAuthService>();
+                    containerBuilder.RegisterType<AuthService>().As<IAuthService>().SingleInstance();
                     break;
                 case AuthType.Aws:
-                    containerBuilder.RegisterType<AwsAuthService>().As<IAuthService>();
+                    containerBuilder.RegisterType<AwsAuthService>().As<IAuthService>().SingleInstance();
                     break;
                 case AuthType.Mock:
-                    containerBuilder.RegisterType<FakeAuthService>().As<IAuthService>();
+                    containerBuilder.RegisterType<FakeAuthService>().As<IAuthService>().SingleInstance();
                     break;
             }
 
+            containerBuilder.RegisterType<NavigationService>().As<INavigationService>().SingleInstance();
+
+
 
             //ViewModels
-
+            containerBuilder.RegisterType<ContactDetailsPageVM>();
         }
 
         public T Resolve<T>()

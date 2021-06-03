@@ -13,6 +13,9 @@ namespace MDEV1014PracticeProject.Services.Auth
         {
         }
 
+        private User _activeUser;
+        public User activeUser { get => _activeUser; set => _activeUser = value; }
+
         public async Task<AuthSession> SignInAsync(string username, string password)
         {
             try
@@ -34,6 +37,7 @@ namespace MDEV1014PracticeProject.Services.Auth
 
                 Debug.WriteLine($"AWS_Service> Response from server:{res}");
 
+
                 return JsonConvert.DeserializeObject<AuthSession>(res);
 
             }
@@ -42,6 +46,20 @@ namespace MDEV1014PracticeProject.Services.Auth
                 return null;
             }
             
+        }
+
+        public void SetActiveUser(User user)
+        {
+            if (user == null) {
+                return;
+            }
+            activeUser = user;
+        }
+
+        public bool Signout()
+        {
+            activeUser = null;
+            return true;
         }
     }
 }

@@ -11,6 +11,11 @@ namespace MDEV1014PracticeProject.Services.Auth
         {
         }
 
+
+        private User _activeUser;
+        public User activeUser { get => _activeUser; set => _activeUser = value; }
+
+
         public async Task<AuthSession> SignInAsync(string username, string password)
         {
             Debug.WriteLine("Mock SignInAsync");
@@ -37,6 +42,21 @@ namespace MDEV1014PracticeProject.Services.Auth
                 };
             }
             
+        }
+
+        public void SetActiveUser(User user)
+        {
+            if (user == null)
+            {
+                return;
+            }
+            activeUser = user;
+        }
+
+        public bool Signout()
+        {
+            activeUser = null;
+            return true;
         }
     }
 }

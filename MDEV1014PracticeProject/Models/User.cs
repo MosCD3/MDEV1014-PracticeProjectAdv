@@ -11,6 +11,7 @@ namespace MDEV1014PracticeProject.Models
         public string email { get; set; }
         public string image_url { get; set; }
         public string type { get; set; }
+        public string token { get; set; }
         public int age { get; set; }
     }
 }

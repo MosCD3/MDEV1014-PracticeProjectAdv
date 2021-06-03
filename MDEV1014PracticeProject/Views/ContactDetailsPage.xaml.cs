@@ -8,10 +8,16 @@ namespace MDEV1014PracticeProject.Views
 {
     public partial class ContactDetailsPage : ContentPage
     {
-        public ContactDetailsPage(User user)
+
+        public ContactDetailsPage()
         {
-            BindingContext = new ContactDetailsPageVM(user: user);
             InitializeComponent();
         }
+
+        //public ContactDetailsPage(User user)
+        //{
+        //    BindingContext = new ContactDetailsPageVM(user: user);
+        //    InitializeComponent();
+        //}
     }
 }

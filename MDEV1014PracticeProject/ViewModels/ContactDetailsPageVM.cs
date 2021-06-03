@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Diagnostics;
+using System.Threading.Tasks;
 using MDEV1014PracticeProject.Models;
 
 namespace MDEV1014PracticeProject.ViewModels
@@ -7,17 +9,54 @@ namespace MDEV1014PracticeProject.ViewModels
     {
         private User userModel;
 
-        public string cName { get; set; }
-        public string cEmail { get; set; }
-        public string cCollege { get; set; }
 
-        public ContactDetailsPageVM(User user)
+
+        public string _cName;
+        public string cName
         {
+            get { return _cName; }
+            set { SetProperty(ref _cName, value); }
+        }
+
+
+        public string _cEmail;
+        public string cEmail
+        {
+            get { return _cEmail; }
+            set { SetProperty(ref _cEmail, value); }
+        }
+
+        public string _cCollege;
+        public string cCollege
+        {
+            get { return _cCollege; }
+            set { SetProperty(ref _cCollege, value); }
+        }
+
+
+        public ContactDetailsPageVM()
+        {
+            
+
+        }
+
+        private void PopulateData(User user) {
             userModel = user;
             cName = userModel.name;
             cEmail = userModel.email;
             cCollege = "Georgian College";
+        }
 
+
+        public override Task InitializeAsync(object navigationData)
+        {
+            var castedUser = navigationData as Faculty;
+            if (castedUser == null) {
+                Debug.WriteLine("Errorr>ContactDetailsPageVM> InitializeAsync> Casting Faculty failed");
+                return null;
+            }
+            PopulateData(castedUser);
+            return base.InitializeAsync(navigationData);
         }
     }
 }
