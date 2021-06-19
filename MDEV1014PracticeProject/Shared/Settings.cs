@@ -9,14 +9,14 @@ namespace MDEV1014PracticeProject
     public class Settings
     {
 
-
+        public static string MESSENGERKEY_MAINNAV = "OnMainNavTrigger";
         public static string mockUserPassword = "123456";
         public static string mockUsername = "moscd3@gmail.com";
         public static string mockToken = "sdjflaksdjf;asldfasdfasdfasd";
 
         //Auth used
 #if DEBUG
-        public AuthType authType = AuthType.Aws;
+        public AuthType authType = AuthType.Mock;
 #else
         public AuthType authType = AuthType.Aws;
 #endif

@@ -8,7 +8,6 @@ namespace MDEV1014PracticeProject.ViewModels
     public class ContactsPageVM: ViewModelBase
     {
 
-        public string Title { get; set; }
 
         public ObservableCollection<User> _itemslist = new ObservableCollection<User>();
         public ObservableCollection<User> ItemsList
@@ -45,11 +44,5 @@ namespace MDEV1014PracticeProject.ViewModels
             ItemsList.Add(new User { name = "Rob", email = "rob@georgiancollege.ca", image_url = "customer.png" });
         }
 
-
-        //private void PlaylistItemSelected(User item)
-        //{
-        //    Debug.WriteLine($"user selected with name:{item.Name}");
-
-        //}
     }
 }

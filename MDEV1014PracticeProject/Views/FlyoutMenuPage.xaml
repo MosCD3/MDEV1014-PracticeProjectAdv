@@ -7,7 +7,31 @@
              Padding="0,40,0,0"
              Title="☰">
     <StackLayout>
-        <ListView x:Name="listView" x:FieldModifier="public">
+        <CollectionView
+            x:Name="collectionList"
+            ItemsSource="{Binding ItemsList}"
+            SelectedItem="{Binding SelectedItem, Mode=TwoWay}"
+            SelectionMode="Single"
+            VerticalOptions="FillAndExpand"
+            ItemSizingStrategy="MeasureFirstItem"
+            FlowDirection="LeftToRight">
+
+             <CollectionView.ItemTemplate>
+                 <DataTemplate>
+                    
+                        <Grid Padding="5,10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="30"/>
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Image Source="{Binding IconSource}" />
+                            <Label Grid.Column="1" Text="{Binding Title}" />
+                        </Grid>
+                    
+                </DataTemplate>
+             </CollectionView.ItemTemplate>
+          </CollectionView>
+        <!--<ListView x:Name="listView" ItemSelected="listView_ItemSelected" x:FieldModifier="public">
             <ListView.ItemsSource>
                 <x:Array Type="{x:Type models:MenuListItem}">
                     <models:MenuListItem Title="Home" IconSource="home.png" TargetType="{x:Type views:InternalHomePage}" />
@@ -31,6 +55,6 @@
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
-        </ListView>
+        </ListView>-->
     </StackLayout>
 </ContentPage>

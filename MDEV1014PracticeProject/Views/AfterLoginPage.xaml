@@ -6,7 +6,7 @@
     x:Class="MDEV1014PracticeProject.Views.AfterLoginPage"
     BackgroundColor="{StaticResource PageBackgroundColor}">
 
-    <FlyoutPage.Flyout>
+    <!--<FlyoutPage.Flyout>
         <views:FlyoutMenuPage x:Name="flyoutPage" />
     </FlyoutPage.Flyout>
 
@@ -16,6 +16,6 @@
                 <views:InternalHomePage />
             </x:Arguments>
         </NavigationPage>
-    </FlyoutPage.Detail>
+    </FlyoutPage.Detail>-->
 
 </FlyoutPage>

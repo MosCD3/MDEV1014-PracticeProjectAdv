@@ -11,6 +11,7 @@ namespace MDEV1014PracticeProject.Views
 
         public ContactDetailsPage()
         {
+    
             InitializeComponent();
         }
 

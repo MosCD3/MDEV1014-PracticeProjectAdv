@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
+using MDEV1014PracticeProject.Services.Navigation;
 using Xamarin.Forms;
 
 namespace MDEV1014PracticeProject.ViewModels
@@ -24,6 +25,12 @@ namespace MDEV1014PracticeProject.ViewModels
         {
             get { return title; }
             set { SetProperty(ref title, value); }
+        }
+
+        protected INavigationService navigationService; 
+
+        public ViewModelBase() {
+            navigationService = Locator.Instance.Resolve<INavigationService>()
         }
 
         protected bool SetProperty<T>(ref T backingStore, T value,

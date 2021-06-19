@@ -39,6 +39,10 @@ namespace MDEV1014PracticeProject
 
             //ViewModels
             containerBuilder.RegisterType<ContactDetailsPageVM>();
+            containerBuilder.RegisterType<ContactsPageVM>();
+            containerBuilder.RegisterType<FlyoutMenuPageVM>();
+            containerBuilder.RegisterType<InternalHomePageVM>();
+            containerBuilder.RegisterType<FacultyPageVM>();
         }
 
         public T Resolve<T>()

@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using System.Threading.Tasks;
 using MDEV1014PracticeProject.Models;
+using MDEV1014PracticeProject.Services.Navigation;
 
 namespace MDEV1014PracticeProject.ViewModels
 {
@@ -33,10 +34,10 @@ namespace MDEV1014PracticeProject.ViewModels
             set { SetProperty(ref _cCollege, value); }
         }
 
-
-        public ContactDetailsPageVM()
+        private INavigationService navigationService;
+        public ContactDetailsPageVM(INavigationService nav)
         {
-            
+            navigationService = nav;
 
         }
 
